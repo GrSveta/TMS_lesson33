@@ -95,7 +95,7 @@ function hasAnimals (users: IUser[]): string {
 
 //Task_5====================Создать функцию, которая бы принимала массив пользователей и отдавала бы  строку с названиями марок автомобилей через запятую====================
 function hasCars (users: IUser[]): string {
-    let withCars = [];
+    let withCars: string[][] = [];
     users.forEach((element) => {
       if (element.cars !== undefined) {
         withCars.push(element.cars);
