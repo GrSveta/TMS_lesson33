@@ -1,49 +1,54 @@
 // Протипизировать данные
 // каждый фложенный объект и идентичные повторяющиеся свойста вынести в отдельный type/interface
 // для описания полей language и genres используйте литеральные типы и объединение (Пример: type Name = 'John' | 'Anna')
-type genres = "Comedy" | "Family" | "Romance" | "Drama"
+type Genres = "Comedy" | "Family" | "Romance" | "Drama"
 
-type language = "Dutch" | "English"
+type Language = "Dutch" | "English"
 
-type name = "Golden Girls" | "The Golden Girls" | "The Holden Girls: Mandy & Myrtle"
+type Name = "Golden Girls" | "The Golden Girls" | "The Holden Girls: Mandy & Myrtle"
 
-type schedule = {
+type Schedule = {
     time: string
     days: string[]
 }
 
-type country = {
+type Country = {
     name: string
     code: string
     timezone: string
 }
 
-type network = {
+type Network = {
     id: number,
     name: string,
-    country: country
+    country: Country
     officialSite: null
 }
 
-type href = string
+type Href = {
+    href: string
+    }
+    
+type Links = {Self: Href ,
+            Previousepisode: Href  }
 
-type show = {
+type Show = {
    id: number
    url: string
-   name:  name
+   name:  Name
    type: string
-   language: language
-   genres:  genres[]
+   language: Language
+   genres:  Genres[]
    status: string
    runtime: number | null
    averageRuntime: number
    premiered: string
    ended: string | null
    officialSite: null | string
-   schedule: schedule
+   schedule: Schedule
    rating: {average: null | number} 
    weight: number
-   network: network
+   network: Network
    webChannel: null
    dvdCountry: null
    externals: {
@@ -57,13 +62,10 @@ type show = {
 }
     summary: string
     updated: number,
-    _links: {
-        self: {href}
-        previousepisode: {href}
-    }
+    _links: Links
 }
 
-interface IShow extends show  {
+interface IShow extends Show  {
     score: number
 }
 const shows = [
